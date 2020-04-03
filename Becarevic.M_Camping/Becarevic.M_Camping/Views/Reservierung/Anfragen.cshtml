@@ -1,1 +1,79 @@
-﻿
+﻿@model Becarevic.M_Camping.Models.Reservierung
+
+
+@{
+    ViewBag.Title = "Anfragen";
+}
+
+<h2 class="header1">Reservierung</h2>
+
+@using (Html.BeginForm())
+{
+    <p>
+        @Html.ValidationSummary()
+    </p>
+
+<table>
+    <thead>
+        <tr>
+            <td colspan="2">Reservierung</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Html.LabelFor(r => r.Firstname, "Vorname*")</td>
+            <td>@Html.TextBoxFor(r => r.Firstname, new { required = "required" })</td>
+            <span class="errorForm">
+                @Html.ValidationMessageFor(r => r.Firstname)
+            </span>
+        </tr>
+
+        <tr>
+            <td>@Html.LabelFor(r => r.Lastname, "Nachname*")</td>
+            <td>
+                @Html.TextBoxFor(r => r.Lastname, new { required = "required" })<br />
+                <span class="errorForm">
+                    @Html.ValidationMessageFor(r => r.Lastname)
+                </span>
+            </td>
+
+        </tr>
+
+        <tr>
+            <td>@Html.LabelFor(r => r.Street, "Straße*")</td>
+            <td>@Html.TextBoxFor(r => r.Street, new { required = "required" })</td>
+        </tr>
+
+
+        <tr>
+            <td>@Html.LabelFor(r => r.Phonenumber, "Telefonnummer*")</td>
+            <td>@Html.TextBoxFor(r => r.Phonenumber, new { required = "required" })</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(r => r.Birthdate, "Geburtsdatum")</td>
+            <td>@Html.TextBoxFor(r => r.Birthdate, new { type = "date" })</td>
+        </tr>
+
+
+        <tr>
+            <td>@Html.LabelFor(r => r.Category, "Kategorie*")</td>
+            <td>@Html.EnumDropDownListFor(r => r.Category, new { required = "required" })</td>
+        </tr>
+
+
+        <tr>
+            <td colspan="2" style="text-align:center">
+                <input type="submit" value="absenden" id="btnSubmit" />
+                <input type="reset" value="abbrechen" id="btnReset" />
+            </td>
+
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="2">* sind Pflichtfelder</td>
+        </tr>
+    </tfoot>
+
+</table>
+}
